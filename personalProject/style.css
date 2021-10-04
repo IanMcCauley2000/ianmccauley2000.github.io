@@ -1,0 +1,36 @@
+
+body {
+    background-color: lightgrey;
+    color: blue;
+    font-family: Verdana, sans-serif;
+}
+
+header {
+    background-image: url("https://naispace.files.wordpress.com/2014/04/cropped-industry-gears-header.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    color:whitesmoke;
+    text-align: left;
+    padding: 40px 0px 70px 20px;
+    
+}
+
+h2 {
+    text-align: center;
+}
+
+p2 {
+    text-align: left;
+}
+
+.piston{
+    float: right;
+    width:220px;
+    height:200px;
+    padding: 0px 20px 0px 20px;
+}
+
+p3 {
+    width: 66.66%;
+    text-align: right;
+}
