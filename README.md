@@ -1,6 +1,6 @@
 ---
-layout:default
-title:Projects Host Page
+layout: default
+title: Projects Host Page
 ---
 
 # My 304 Projects
