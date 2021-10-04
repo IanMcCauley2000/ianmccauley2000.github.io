@@ -1,3 +1,8 @@
+---
+layout:default
+title:Projects Host Page
+---
+
 # My 304 Projects
 By: Ian McCauley<br>
 
