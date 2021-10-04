@@ -1,4 +1,4 @@
-# My 304 Projects
+<title> My 304 Projects </title>
 By: Ian McCauley<br>
 
 
