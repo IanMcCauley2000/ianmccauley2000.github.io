@@ -1,6 +1,5 @@
 ## My 304 Projects
-
-By: Ian McCauley
+By: Ian McCauley<br>
 
 
 **Projects**
