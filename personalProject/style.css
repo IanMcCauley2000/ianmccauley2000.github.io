@@ -1,19 +1,38 @@
 
 body {
-    background-color: lightgrey;
-    color: blue;
     font-family: Verdana, sans-serif;
+    border-image: url("https://previews.123rf.com/images/twindesign/twindesign1302/twindesign130200077/17876439-mechanic-background.jpg") ;
+    border-image-width: 10%;
 }
 
 header {
     background-image: url("https://naispace.files.wordpress.com/2014/04/cropped-industry-gears-header.jpg");
     background-size: 100%;
     background-repeat: no-repeat;
-    color:whitesmoke;
+    color:lightgrey;
     text-align: left;
     padding: 40px 0px 70px 20px;
     
 }
+
+.border {
+    --stripe: #383a3b;
+    --bg: #080707;
+    background: linear-gradient(135deg, var(--bg) 25%, transparent 25%) -50px 0,
+    linear-gradient(225deg, var(--bg) 25%, transparent 25%) -50px 0,
+    linear-gradient(315deg, var(--bg) 25%, transparent 25%),
+    linear-gradient(45deg, var(--bg) 25%, transparent 25%);
+    background-size: 20px 25px;
+    background-color: var(--stripe);;
+    float: left;
+    width: 10%;
+    }
+
+.article {
+    background-color: lightgrey;
+     float: center;
+     width: 80%;
+    }
 
 h2 {
     text-align: center;
@@ -23,14 +42,18 @@ p2 {
     text-align: left;
 }
 
-.piston{
+.pistonImage{
     float: right;
-    width:220px;
-    height:200px;
+    width:25%;
     padding: 0px 20px 0px 20px;
 }
 
 p3 {
     width: 66.66%;
     text-align: right;
+}
+.rotaryImage{
+    float: left;
+    width: 40%;
+    padding: 0px 20px 0px 20px;
 }
