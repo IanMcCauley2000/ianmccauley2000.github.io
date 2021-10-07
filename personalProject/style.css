@@ -1,12 +1,13 @@
 
 body {
     font-family: Verdana, sans-serif;
-    border-image: url("https://previews.123rf.com/images/twindesign/twindesign1302/twindesign130200077/17876439-mechanic-background.jpg") ;
+    border-image: url("https://previews.123rf.com/images/twindesign/twindesign1302/twindesign130200077/17876439-mechanic-background.jpg");
     border-image-width: 10%;
 }
 
 header {
-    background-image: url("https://naispace.files.wordpress.com/2014/04/cropped-industry-gears-header.jpg");
+    background-image: url("https://naispace.files.wordpress.com/2014/04/cropped-industry-gears-header.jpg"),url("https://patternlet.com/wp-content/uploads/2020/05/Seamless-Micro-Black-Striped-Beads.png");
+    background-blend-mode:lighten;
     background-size: 100%;
     background-repeat: no-repeat;
     color:lightgrey;
@@ -38,8 +39,8 @@ h2 {
     text-align: center;
 }
 
-p2 {
-    text-align: left;
+p{
+    color: rgb(33, 56, 56);
 }
 
 .pistonImage{
@@ -48,12 +49,45 @@ p2 {
     padding: 0px 20px 0px 20px;
 }
 
-p3 {
-    width: 66.66%;
-    text-align: right;
-}
 .rotaryImage{
     float: left;
     width: 40%;
     padding: 0px 20px 0px 20px;
 }
+.rotaryGIF{
+    width: 100%;
+    padding: 20px 50px 20px 50px;
+}
+
+.pistonGIF{
+    width: 100%;
+    padding: 20px 50px 20px 50px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+  }
+
+td{
+    background:lightsteelblue;
+}
+
+th{
+    background: slategrey;
+}
+
+table{
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+a:link{
+    color:royalblue;
+}
+
+a:hover{
+    color: red;
+}
+
+
