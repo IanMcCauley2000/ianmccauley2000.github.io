@@ -1,0 +1,40 @@
+#dialog{
+    text-align: center;
+}
+
+.gameBoard{
+    width: 520px;
+    height: 520px;
+    align-content: center;
+    border-radius: 300px;
+    margin-left: 20%;
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: 240px 240px; 
+    grid-template-rows:240px 240px;
+    justify-content: center;
+    border: 4px solid black;
+    background-color: dimgray;
+}
+
+.button {
+    border: 2px solid black;
+    color: transparent;
+   }
+
+#blue{
+    background: blue;
+    border-top-left-radius: 300px;
+}
+#green{
+    background: green;
+    border-top-right-radius: 300px;
+}
+#red{
+    background: red;
+    border-bottom-left-radius: 300px;
+}
+#yellow{
+    background: goldenrod;
+    border-bottom-right-radius: 300px;
+}

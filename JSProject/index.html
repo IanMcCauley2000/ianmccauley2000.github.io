@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+        <title>Simon Says</title>
+        <meta name="viewpoint" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+        <script src="script.js"></script>
+    </head>
+  <body>
+
+    <div id="dialog" title="How to Play">
+        <p>This is simon says. A random sequence of colors will flash and your job is to repeat the sequence. The number of flashes in the sequence will increase each time you get the sequence right.</p>
+            <button type="button" id="play" onclick="play()">play</button>
+    </div>
+
+    <div class = "gameBoard">
+        <div class="button" id="blue"></div>
+        <div class="button" id="green"></div>
+        <div class="button" id="red"></div>
+        <div class="button" id="yellow"></div>
+    </div>
+
+  </body>
+</html>
