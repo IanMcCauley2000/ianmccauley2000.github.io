@@ -1,11 +1,13 @@
-$(function() {
+    $(function() {
     $( "#dialog" ).dialog();
   } );
 
-let correct;
 let compTurn;
 let playerTurn;
 let turnTime;
+let seq = [];
+let playerSeq = [];
+
 
 /* This was a random number function from stackoverflow https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript*/
 function randomIntFromInterval(min, max) { 
@@ -16,55 +18,115 @@ function randomIntFromInterval(min, max) {
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
-  
+
+ /* This function tests if two arrays are equal
+ https://masteringjs.io/tutorials/fundamentals/compare-arrays*/
+function arrayEquals(a, b) {
+    return Array.isArray(a) &&
+    Array.isArray(b) &&
+    a.length === b.length &&
+    a.every((val, index) => val === b[index]);
+}
 
 async function play() {
     $( "#dialog" ).dialog('close');
-    let rndInt = randomIntFromInterval(1, 4);
-    let seq = [];
-    let playerSeq = []
     playerTurn = false;
 
     for(i = 0; i < 84; i++) {
-        seq.push(rndInt);
-        if(playerTurn == false) {
+        if (playerTurn == false) {
+            let rndInt = randomIntFromInterval(1, 4);
+            seq.push(rndInt);
+            document.getElementById("score").innerHTML = "<p>score: "+ seq.length +"</p>" ;
             let j = 0;
-            
-            for(j = 0; j < seq.length; j++) 
-            {console.log(seq.length);
+            for(j = 0; j < seq.length; j++) {
                     if (seq[j] == 1) {blueLight()};
                     if (seq[j] == 2) {greenLight()};
                     if (seq[j] == 3) {redLight()};
                     if (seq[j] == 4) {yellowLight()};
                     await sleep(1000);
-                    
-                   if (j + 1 == seq.length);{playerTurn = true};
-                   colorReset();
+                }
+                {playerTurn = true};
+                await playersTurn();
+            }
+        }
+    }
+        
+        async function playersTurn() {
+                playerSeq = [];
+                document.getElementById("blue").addEventListener("click", blueLight);
+                document.getElementById("green").addEventListener("click", greenLight);
+                document.getElementById("red").addEventListener("click", redLight);
+                document.getElementById("yellow").addEventListener("click", yellowLight)
+               while (playerSeq.length < seq.length) {
                    await sleep(200);
                 }
+                
+            if (seq.length == 85) {
+                document.getElementById("text").innerHTML = "<h3>World Record... Congrats</h3>";
             }
-        else (playerTurn == true);
-        //make the players turn by adding event listenr. make the array match
-        {playerSeq.push(1);}
-        
-        }    
-    }
+            if (arrayEquals(playerSeq, seq)) {
+                playerTurn = false;
+                correct();
+            }
+            else {gameover();}
+            await sleep(1500);
+            }
+          
+
 
 function blueLight() {
     document.getElementById("blue").style.background = "lightskyblue";
+    if (playerTurn == true) {playerSeq.push(1);}
+    colorReset();     
 }
+
 function greenLight() {
     document.getElementById("green").style.background = "lime";
+    if (playerTurn == true) {playerSeq.push(2);}
+    colorReset();
 }
+
 function redLight() {
     document.getElementById("red").style.background = "magenta";
+    if (playerTurn == true) {playerSeq.push(3);}
+    colorReset();
 }
+
 function yellowLight() {
     document.getElementById("yellow").style.background = "yellow";
+    if (playerTurn == true) {playerSeq.push(4);}
+    colorReset();
 }
-function colorReset(){
+
+async function colorReset(){
+    await sleep(800);
     document.getElementById("blue").style.background = "blue";
     document.getElementById("green").style.background = "green";
     document.getElementById("red").style.background = "red";
     document.getElementById("yellow").style.background = "goldenrod";
+}
+
+// indicate that the players sequence did not match
+function gameover() {
+    document.body.style.animation = "wrong 2s linear infinite";
+    document.getElementById("text").style.animation = "emphasize 2s linear infinite";
+    document.getElementById("text").innerHTML = "<h3>Wrong LOL</h3>";
+}
+
+//indicate a matching sequence to player
+async function correct() {
+    document.body.style.background = "green";
+    document.getElementById("text").innerHTML = "<h3>Correct</h3>";
+    await sleep(1000);
+    document.body.style.background = "white";
+    document.getElementById("text").innerHTML = "";
+}
+
+//reset backgrounds and sequence then run play function again 
+function newGame(){
+    seq = [];
+    document.body.style.background = "white";
+    document.body.style.animation = "";
+    document.getElementById("text").innerHTML = "";
+    play();
 }
