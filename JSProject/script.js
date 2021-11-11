@@ -7,6 +7,7 @@ let playerTurn;
 let turnTime;
 let seq = [];
 let playerSeq = [];
+let mySound;
 
 
 /* This was a random number function from stackoverflow https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript*/
@@ -28,6 +29,17 @@ function arrayEquals(a, b) {
     a.every((val, index) => val === b[index]);
 }
 
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    this.play = function(){
+        this.sound.play();
+    }    
+}
+
 async function play() {
     $( "#dialog" ).dialog('close');
     playerTurn = false;
@@ -43,7 +55,7 @@ async function play() {
                     if (seq[j] == 2) {greenLight()};
                     if (seq[j] == 3) {redLight()};
                     if (seq[j] == 4) {yellowLight()};
-                    await sleep(1000);
+                    await sleep(800);
                 }
                 {playerTurn = true};
                 await playersTurn();
@@ -56,9 +68,9 @@ async function play() {
                 document.getElementById("blue").addEventListener("click", blueLight);
                 document.getElementById("green").addEventListener("click", greenLight);
                 document.getElementById("red").addEventListener("click", redLight);
-                document.getElementById("yellow").addEventListener("click", yellowLight)
+                document.getElementById("goldenrod").addEventListener("click", yellowLight)
                while (playerSeq.length < seq.length) {
-                   await sleep(200);
+                   await sleep(100);
                 }
                 
             if (seq.length == 85) {
@@ -76,34 +88,39 @@ async function play() {
 
 function blueLight() {
     document.getElementById("blue").style.background = "lightskyblue";
+    mySound = new sound("beep-b.mp3");
+    mySound.play();
     if (playerTurn == true) {playerSeq.push(1);}
-    colorReset();     
+    colorReset("blue");     
 }
 
 function greenLight() {
     document.getElementById("green").style.background = "lime";
+    mySound = new sound("beep-g.mp3");
+    mySound.play();
     if (playerTurn == true) {playerSeq.push(2);}
-    colorReset();
+    colorReset("green");
 }
 
 function redLight() {
     document.getElementById("red").style.background = "magenta";
+    mySound = new sound("beep-r.mp3");
+    mySound.play();
     if (playerTurn == true) {playerSeq.push(3);}
-    colorReset();
+    colorReset("red");
 }
 
 function yellowLight() {
-    document.getElementById("yellow").style.background = "yellow";
+    document.getElementById("goldenrod").style.background = "yellow";
+    mySound = new sound ("beep-y.mp3");
+    mySound.play();
     if (playerTurn == true) {playerSeq.push(4);}
-    colorReset();
+    colorReset("goldenrod");
 }
 
-async function colorReset(){
-    await sleep(800);
-    document.getElementById("blue").style.background = "blue";
-    document.getElementById("green").style.background = "green";
-    document.getElementById("red").style.background = "red";
-    document.getElementById("yellow").style.background = "goldenrod";
+async function colorReset(color){
+    await sleep(600);
+    document.getElementById(color).style.background = color;
 }
 
 // indicate that the players sequence did not match
