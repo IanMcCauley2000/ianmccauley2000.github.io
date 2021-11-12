@@ -2,13 +2,10 @@
     $( "#dialog" ).dialog();
   } );
 
-let compTurn;
 let playerTurn;
-let turnTime;
 let seq = [];
 let playerSeq = [];
 let mySound;
-
 
 /* This was a random number function from stackoverflow https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript*/
 function randomIntFromInterval(min, max) { 
@@ -44,13 +41,12 @@ async function play() {
     $( "#dialog" ).dialog('close');
     playerTurn = false;
 
-    for(i = 0; i < 84; i++) {
+    for(let i = 0; i < 84; i++) {
         if (playerTurn == false) {
             let rndInt = randomIntFromInterval(1, 4);
             seq.push(rndInt);
             document.getElementById("score").innerHTML = "<p>score: "+ seq.length +"</p>" ;
-            let j = 0;
-            for(j = 0; j < seq.length; j++) {
+            for(let j = 0; j < seq.length; j++) {
                     if (seq[j] == 1) {blueLight()};
                     if (seq[j] == 2) {greenLight()};
                     if (seq[j] == 3) {redLight()};
@@ -148,5 +144,4 @@ function newGame(){
     document.body.style.animation = "";
     document.getElementById("text").innerHTML = "";
     play();
-    
 }
