@@ -55,7 +55,7 @@ async function play() {
                     if (seq[j] == 2) {greenLight()};
                     if (seq[j] == 3) {redLight()};
                     if (seq[j] == 4) {yellowLight()};
-                    await sleep(800);
+                    await sleep(600);
                 }
                 {playerTurn = true};
                 await playersTurn();
@@ -119,7 +119,7 @@ function yellowLight() {
 }
 
 async function colorReset(color){
-    await sleep(600);
+    await sleep(400);
     document.getElementById(color).style.background = color;
 }
 
@@ -136,7 +136,7 @@ async function correct() {
     document.body.style.background = "green";
     document.getElementById("text").innerHTML = "<h3>Correct</h3>";
     await sleep(1000);
-    document.body.style.background = "white";
+    document.body.style.background = "lavenderblush";
     document.getElementById("text").innerHTML = "";
 }
 
@@ -144,7 +144,7 @@ async function correct() {
 function newGame(){
     document.getElementById("newGameButton").innerHTML = "";
     seq = [];
-    document.body.style.background = "white";
+    document.body.style.background = "lavenderblush";
     document.body.style.animation = "";
     document.getElementById("text").innerHTML = "";
     play();
