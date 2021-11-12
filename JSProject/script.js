@@ -123,11 +123,12 @@ async function colorReset(color){
     document.getElementById(color).style.background = color;
 }
 
-// indicate that the players sequence did not match
+// indicate that the players sequence did not match creates new game button so player can start over
 function gameover() {
     document.body.style.animation = "wrong 2s linear infinite";
     document.getElementById("text").style.animation = "emphasize 2s linear infinite";
     document.getElementById("text").innerHTML = "<h3>Wrong LOL</h3>";
+    document.getElementById("newGameButton").innerHTML = "<button type='button' id='newGame' onclick='newGame()'>New Game</button>";
 }
 
 //indicate a matching sequence to player
@@ -139,11 +140,13 @@ async function correct() {
     document.getElementById("text").innerHTML = "";
 }
 
-//reset backgrounds and sequence then run play function again 
+//reset backgrounds and sequence then run play function again then gets rid of new game button so that it can not be spammed creating extra instances of play
 function newGame(){
+    document.getElementById("newGameButton").innerHTML = "";
     seq = [];
     document.body.style.background = "white";
     document.body.style.animation = "";
     document.getElementById("text").innerHTML = "";
     play();
+    
 }
