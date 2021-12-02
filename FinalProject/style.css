@@ -1,0 +1,23 @@
+@font-face {
+        font-family: NASDAQ;
+        src: url(NASDAQER.ttf);
+    }
+
+#submit{
+    margin-left: 5px;
+    color: blue;
+}
+.marquee3k{
+    width: 100%;
+    size: 100%;
+}
+
+h1{
+    font-family: NASDAQ;
+}
+body{
+    background-color: cadetblue;
+}
+canvas{
+    background-color: cornsilk;
+}
