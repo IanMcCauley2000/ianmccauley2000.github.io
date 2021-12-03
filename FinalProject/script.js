@@ -16,7 +16,6 @@ today = yyyy + '-' + mm + '-' + dd;
 https://www.cssscript.com/smooth-marquee-like-scroller-pure-javascript-marquee3000/
 Author: http://github.com/ezekielaquino/marquee3000*/
 
-window.addEventListener("load", marqueeData);
 function marqueeData(){
 fetch(api + "AAPL" + apiKey)
     .then(function (response) {
@@ -51,7 +50,7 @@ fetch(api + "AAPL" + apiKey)
         console.log('error: ' + err);
     });
 
-    fetch(api + "HD" + apiKey)
+    fetch(api + "INTC" + apiKey)
     .then(function (response) {
         return response.json();
     })
@@ -74,11 +73,11 @@ fetch(api + "AAPL" + apiKey)
     });
 }
 
+//
 function appendData(data) {
     stocks.push(data["Time Series (Daily)"][today]["2. high"]);
-    console.log(stocks);
     if(stocks.length == 5){
-        document.getElementById("marquee").innerHTML = " || AAPL: $" + stocks[0].toString() + " || IBM: $" + stocks[1].toString() + " || TSLA: $" + stocks[2].toString() + " || HD: $" + stocks[3].toString() + " || PG: $" + stocks[4].toString();
+        document.getElementById("marquee").innerHTML = " || AAPL: <span>$" + stocks[0].toString() + "</span> || IBM: <span>$" + stocks[1].toString() + "</span> || TSLA: <span>$" + stocks[2].toString() + "</span> || INTC: <span>$" + stocks[3].toString() + "</span> || PG: <span>$" + stocks[4].toString(); +"</span>"
         Marquee3k.init();
     }
 }
@@ -94,12 +93,17 @@ function getData(){
     })
     .then(function (data) {
         gatherData(data);
-    });
+    })
+    .catch(function(error) {
+        console.log(error)
+      });
 }
 
 function gatherData(data){
     var points = [];
     var labels = [];
+    //push 30 most recent availible dates to labels and push the coresponding high value to points
+    //https://github.com/sarthakdixit/JavaScript/blob/master/Stock%20Forex%20Data/index.js
     var date = data["Time Series (Daily)"]
       let a = 40;
       let b = 30;
@@ -130,14 +134,16 @@ function createGraph(labels,points){
         labels: labels,
         datasets: [{
             label: "Daily high for ($)" + ticker,
-            backgroundColor  : 'rgb(100, 99, 132,0.2)',
-            borderColor      : 'rgb(63, 242, 153)',
-            color            : 'rgb(63, 242, 153)',
-            family           : 'Helvetica',
-            pointHitRadius   : 10,
-            data             : points.reverse(),
-            fill             : true,
-            tension          : 0.1
+            backgroundColor     : 'rgb(100, 99, 132,0.6)',
+            borderColor         : 'green',
+            color               : 'rgb(63, 242, 153)',
+            family              : 'Helvetica',
+            width               : "100px",
+            responsive          : true ,
+            pointHitRadius      : 10,
+            data                : points.reverse(),
+            fill                : true,
+            tension             : 0.1
         }]
       };
 
@@ -145,13 +151,14 @@ function createGraph(labels,points){
         type: 'line',
         data: DATA,
         options: {
-            
+            maintainAspectRatio : false,
         }
       };
 
       if (myChart != null) {
       myChart.destroy();}
 
+    document.getElementById("myChart").style.backgroundColor = "white";
     myChart = new Chart(
         document.getElementById('myChart'),
         config

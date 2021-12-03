@@ -5,19 +5,81 @@
 
 #submit{
     margin-left: 5px;
-    color: blue;
+    border-radius: 10px;
 }
+
+#submit:hover{
+    margin-left:1px;
+    font-weight: bold;
+    color: green;
+}
+
+#ticker{
+    margin-left: 5px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
 .marquee3k{
     width: 100%;
-    size: 100%;
+    height: 38px;
+}
+
+hr {
+    height: 1px;
+    margin: 0px 0px 0px 0px;
 }
 
 h1{
     font-family: NASDAQ;
+    font-size: 40pt;
+    text-align: center;
+    margin: auto;
 }
-body{
-    background-color: cadetblue;
-}
+
 canvas{
     background-color: cornsilk;
+    align-items: center;
+    margin-top: 8px;
 }
+span{
+    color: green;
+}
+
+#info{
+    position: absolute;
+    text-align: center;
+    bottom: 0px;
+    width: 100%;
+}
+
+.userInput{
+    text-align: center;
+}
+
+input{
+    color: #333;
+    text-shadow: none; 
+}
+
+body {
+    text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+    background-color: grey;
+}
+
+html {
+    height: 100%;
+    box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+}
+
+.chart {
+    margin: auto;
+    width: 80%;
+    height: 350px;
+    background-color: grey;
+}
+canvas {
+    background-color: grey;
+}
+
+
